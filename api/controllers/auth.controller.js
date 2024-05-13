@@ -1,16 +1,16 @@
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs"
+import { errorHandler } from "../utils/error.js";
 
 export const signup = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
   if (!firstName || !lastName || !email || !password || firstName === "" || lastName === "" || email === "" || password === "") {
-    res.status(400).json({ message: "All fields are required" });
+    return next(errorHandler(400, "Alll fields are required"));
   }
 
   if (password.length < 8) {
-    res.status(403).json({message: "Passworrd must be at least 8 characters long"});
-    return;
+    return next(errorHandler(403, "Password must be at least 8 characters long"));
   }
 
   const hashedPassword = bcryptjs.hashSync(password, 12);
@@ -21,6 +21,6 @@ export const signup = async (req, res, next) => {
     await newUser.save();
     res.json("Signup Successful");
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    next(error);
   }
 }
