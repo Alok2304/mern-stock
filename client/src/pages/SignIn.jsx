@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signInStart , signInSuccess , signInFailure } from "../redux/user/userSlice.js";
+import { useDispatch , useSelector } from "react-redux";
 
 // function Copyright(props) {
 //   return (
@@ -35,9 +37,9 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
 	const [formData, setFormData] = useState({});
-	const [errorMessage, setErrorMessage] = useState(null);
-	const [loading, setLoading] = useState(false);
+	const { loading, error: errorMessage} = useSelector(state => state.user);
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
@@ -46,11 +48,10 @@ export default function SignIn() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (!formData.email || !formData.password) {
-			return setErrorMessage("Please fill all the required fields");
+			dispatch(signInFailure("Please fill all the required fields"));
 		}
 		try {
-			setLoading(true);
-			setErrorMessage(null);
+			dispatch(signInStart());
 			const res = await fetch("/api/auth/signin", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -58,18 +59,17 @@ export default function SignIn() {
 			});
 			const data = await res.json();
 			if (data.success === false) {
-				return setErrorMessage(data.message);
+				dispatch(signInFailure(data.message));
 			}
-			setLoading(false);
 			if (res.ok) {
+				dispatch(signInSuccess(data));
 				navigate("/");
 			}
 		} catch (error) {
-			setErrorMessage(error.message);
-			setLoading(false);
-		} finally {
-      setLoading(false);
-    }
+			dispatch(signInFailure(error.message));}
+		// } finally {
+    //   setLoading(false);
+    // }
 
 	};
 
