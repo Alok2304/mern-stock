@@ -12,10 +12,10 @@ export default function Watchlist() {
 		`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=AL1DUXEH4AP5HPDS`
 	)
 		.then((response) => response.json())
-		.then((data) => console.log(data.Information))
+		// .then((data) => console.log(data.Information))
 		.catch((err) => console.log(err));
 
-	console.log(res.Symbol);
+	// console.log(res.Symbol);
 
 	return (
 		<>

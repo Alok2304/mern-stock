@@ -63,9 +63,7 @@ export default function Hero() {
 						color="text.secondary"
 						sx={{ alignSelf: "center", width: { sm: "100%", md: "80%" } }}
 					>
-						Explore our cutting-edge dashboard, delivering high-quality
-						solutions tailored to your needs. Elevate your experience with
-						top-tier features and services.
+						Provides real-time updates on stock prices, market trends, and financial news, allowing users to manage their portfolios, set alerts, and make informed investment decisions through a user-friendly interface
 					</Typography>
 					<Stack
 						direction={{ xs: "column", sm: "row" }}

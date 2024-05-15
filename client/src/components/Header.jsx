@@ -10,6 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
+import HeaderIcon from './icons/HeaderIcon';
 
 const logoStyle = {
   width: '120px',
@@ -81,13 +82,7 @@ function Header() {
                 px: 0,
               }}
             >
-              <img
-                src={
-                  'https://static.vecteezy.com/system/resources/thumbnails/004/982/490/small/modern-stock-market-logo-vector.jpg'
-                }
-                style={logoStyle}
-                alt="logo of stock market"
-              />
+              <HeaderIcon color={"purple"}/>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
                   onClick={() => scrollToSection('watchlist')}
