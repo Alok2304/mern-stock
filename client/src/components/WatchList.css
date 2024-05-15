@@ -11,3 +11,18 @@
   line-height: 2rem;
   font-weight: 600
 }
+
+.lists {
+  border-style: solid;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stock-symbol {
+  color: rgb(113 113 122);
+  
+}
