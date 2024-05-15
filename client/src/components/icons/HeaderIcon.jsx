@@ -1,14 +1,13 @@
 import './HeaderIcon.css';
 
-const HeaderIcon = ({ color }) => {
+const HeaderIcon = ({ width, height }) => {
 	return (
 		<svg
-			fill={color}
       className="web-logo"
 			version="1.0"
 			xmlns="http://www.w3.org/2000/svg"
-			width="1024.000000pt"
-			height="1024.000000pt"
+			width={width}
+			height={height}
 			viewBox="0 0 1024.000000 1024.000000"
 			preserveAspectRatio="xMidYMid meet"
 		>
