@@ -97,6 +97,13 @@ function Header() {
 										Highlights
 									</Typography>
 								</MenuItem>
+								<MenuItem sx={{ py: "6px", px: "12px" }}>
+									<Link to="/about">
+										<Typography variant="body2" color="text.primary">
+											About
+										</Typography>
+									</Link>
+								</MenuItem>
 							</Box>
 						</Box>
 						<Box
